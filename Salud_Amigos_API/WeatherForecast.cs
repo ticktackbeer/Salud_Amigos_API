@@ -1,4 +1,4 @@
-namespace Salud_Amigos_API
+namespace Salud_Amigos.Api
 {
     public class WeatherForecast
     {

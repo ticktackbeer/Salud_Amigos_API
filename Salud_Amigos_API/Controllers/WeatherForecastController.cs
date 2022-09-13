@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Salud_Amigos_API.Controllers
+namespace Salud_Amigos.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
