@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Friend]
+(
+	[Id]							UNIQUEIDENTIFIER	PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+	[UserId]						UNIQUEIDENTIFIER	NOT NULL ,
+	[Email]							NVARCHAR(100)		NOT NULL ,
+	[EmailFriend]					NVARCHAR(100)		NOT NULL 
+	
+
+	CONSTRAINT UC_EmailFriend UNIQUE (Email,EmailFriend),
+	CONSTRAINT FK_User FOREIGN KEY (UserId) REFERENCES [dbo].[User]([Id])
+)
