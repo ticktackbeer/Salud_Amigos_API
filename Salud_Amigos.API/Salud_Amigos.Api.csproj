@@ -4,10 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a05bea30-b0d2-4ef6-b0e6-7db95a715b35</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Salud_Amigos.App\Salud_Amigos.App.csproj" />
+    <ProjectReference Include="..\Salud_Amigos.Storage\Salud_Amigos.Storage.csproj" />
   </ItemGroup>
 
 </Project>
