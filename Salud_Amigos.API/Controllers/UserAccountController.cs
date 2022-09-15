@@ -6,6 +6,8 @@ using Salud_Amigos.App.Model;
 
 namespace Salud_Amigos.Api.Controllers
 {
+    [Consumes("application/json")]
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserAccountController : ControllerBase
@@ -21,7 +23,7 @@ namespace Salud_Amigos.Api.Controllers
         /// <summary>
         /// Create an User
         /// </summary>
-        /// <param name="userAccountDto">User proberties</param>
+        /// <param name="userAccountDto">User properties</param>
         /// <returns>return createtd user</returns>
         [HttpPost]
         [Route("createUser")]
@@ -29,7 +31,7 @@ namespace Salud_Amigos.Api.Controllers
         {
 
             var result = await  _userAccountService.CreateUserAccount(userAccountDto.Email, userAccountDto.Token, userAccountDto.NickName, userAccountDto.Name, userAccountDto.Password, userAccountDto.Age);
-            return  result.ToActionResult(UserAccountDto.FromModel);
+            return  result.ToActionResult(x=> x);
             
         }
 

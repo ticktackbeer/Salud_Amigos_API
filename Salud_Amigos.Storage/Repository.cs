@@ -1,11 +1,6 @@
 ﻿using Salud_Amigos.App.Interface;
 using Salud_Amigos.App.Model;
 using Salud_Amigos.Storage.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Salud_Amigos.Storage
 {
@@ -28,6 +23,7 @@ namespace Salud_Amigos.Storage
             entity.Name = name;
             entity.Password = password;
             entity.Age = age;
+            entity.Timestamp = new DateTimeOffset(DateTime.Now);
             _context.UserAccount.Local.Add(entity);
             await _context.SaveChangesAsync();
 

@@ -1,9 +1,4 @@
 ﻿using Salud_Amigos.App.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Salud_Amigos.Storage.Entities
 {
@@ -17,6 +12,7 @@ namespace Salud_Amigos.Storage.Entities
         public string Name { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public int Age { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
 
 
         public UserAccount ToModel()
