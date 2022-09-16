@@ -11,6 +11,7 @@ namespace Salud_Amigos.App
         {
 
             services.AddTransient<IUserAccountService, UserAccountService>();
+            services.AddTransient<IFriendService, FriendService>();
             return services;
 
         }

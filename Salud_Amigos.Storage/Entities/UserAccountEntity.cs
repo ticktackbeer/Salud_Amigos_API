@@ -15,10 +15,10 @@ namespace Salud_Amigos.Storage.Entities
         public DateTimeOffset Timestamp { get; set; }
 
 
-        public UserAccount ToModel()
+        public UserAccountModel ToModel()
         {
 
-          return new UserAccount(
+          return new UserAccountModel(
                 Id,
                 Email,
                 Token,

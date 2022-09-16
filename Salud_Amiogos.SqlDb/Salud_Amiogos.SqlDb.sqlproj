@@ -61,5 +61,6 @@
     <Build Include="User.sql" />
     <Build Include="Friend.sql" />
     <Build Include="FriendRequest.sql" />
+    <Build Include="Token.sql" />
   </ItemGroup>
 </Project>

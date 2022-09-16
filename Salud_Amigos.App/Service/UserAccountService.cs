@@ -18,9 +18,16 @@ namespace Salud_Amigos.App.Service
 
 
 
-        public Task<UserAccount> CreateUserAccount(string email, string token, string nickName, string name, string password, int age)
+        public async Task<UserAccountModel> CreateUserAccount(string email, string token, string nickName, string name, string password, int age)
         {
-           return _repository.CreateUserAccount(email, token, nickName, name, password, age);  
+            var user= await _repository.CreateUserAccount(email, nickName, name, password, age);
+            var tokenResult = await _repository.CreateToken(user.Id, token, email);
+            return user with { Token = tokenResult.Token};
+        }
+
+        public Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails)
+        {
+            return _repository.GetUsersByEmail(emails);
         }
     }
 }

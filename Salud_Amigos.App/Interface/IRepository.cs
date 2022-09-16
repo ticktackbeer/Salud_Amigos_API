@@ -10,6 +10,11 @@ namespace Salud_Amigos.App.Interface
     public interface IRepository
     {
 
-        Task<UserAccount> CreateUserAccount(string email, string token, string nickName, string name, string password, int age);
+        Task<UserAccountModel> CreateUserAccount(string email, string nickName, string name, string password, int age);
+        Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails);
+        Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend);
+        Task<TokenModel> CreateToken(Guid userId, string token, string email);
+        Task<List<FriendModel>> GetFriendsByEmail(string email);
+
     }
 }

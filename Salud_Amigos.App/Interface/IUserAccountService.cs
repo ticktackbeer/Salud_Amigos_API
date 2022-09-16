@@ -10,6 +10,7 @@ namespace Salud_Amigos.App.Interface
     public interface IUserAccountService
     {
 
-        Task<UserAccount> CreateUserAccount(string email, string token, string nickName, string name, string password, int age);
+        Task<UserAccountModel> CreateUserAccount(string email, string token, string nickName, string name, string password, int age);
+        Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails);
     }
 }
