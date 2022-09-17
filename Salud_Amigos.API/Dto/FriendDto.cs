@@ -4,8 +4,6 @@ namespace Salud_Amigos.Api.Dto
 {
     public record FriendDto
     {
-
-        
         public Guid UserId { get; init; } = default(Guid);
         public Guid UserIdFriend { get; init; } = default(Guid);
         [Required(ErrorMessage = "Email address is required.")]
