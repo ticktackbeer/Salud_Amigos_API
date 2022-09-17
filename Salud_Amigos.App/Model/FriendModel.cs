@@ -4,7 +4,7 @@
     {
 
 
-        public FriendModel(Guid id, Guid userId,Guid userIdFriend, string email, string emailFriend, TokenModel token)
+        public FriendModel(Guid id, Guid userId,Guid userIdFriend, string email, string emailFriend, TokenModel token,UserAccountModel userAccountModel)
         {
             Id = id;
             UserId = userId;
@@ -12,8 +12,10 @@
             Email = email;
             EmailFriend = emailFriend;
             Token = token;
-            
-           
+            UserAccountFriend = userAccountModel;
+
+
+
         }
 
         public Guid Id { get; }
@@ -22,6 +24,7 @@
         public string Email { get; }
         public string EmailFriend { get; }
         public TokenModel Token { get; }
+        public UserAccountModel UserAccountFriend { get; }
     
         
     }

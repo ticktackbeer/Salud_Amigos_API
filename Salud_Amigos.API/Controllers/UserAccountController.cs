@@ -18,8 +18,6 @@ namespace Salud_Amigos.Api.Controllers
             _userAccountService = userAccountService;
         }
 
-
-
         /// <summary>
         /// Create an User
         /// </summary>
@@ -36,16 +34,31 @@ namespace Salud_Amigos.Api.Controllers
         }
 
         /// <summary>
-        /// Create an User
+        /// Get User by Emails
         /// </summary>
-        /// <param name="userAccountDto">User properties</param>
-        /// <returns>return createtd user</returns>
+        /// <param name="email">Emails to search the user</param>
+        /// <returns>return a list of users</returns>
         [HttpGet]
         [Route("GetUsersByEmail")]
         public async Task<ActionResult<List<UserAccountModel>>> GetUsersByEmail([FromQuery] List<string> email)
         {
 
             var result = await _userAccountService.GetUsersByEmail(email);
+            return result.ToActionResult(x => x);
+
+        }
+
+        /// <summary>
+        /// Get a User by Search String
+        /// </summary>
+        /// <param name="searchText"> String to search the user</param>
+        /// <returns>return a list of users</returns>
+        [HttpGet]
+        [Route("GetUsersBySearchText")]
+        public async Task<ActionResult<List<UserAccountModel>>> GetUsersBySearchText([FromQuery] string searchText)
+        {
+
+            var result = await _userAccountService.GetUsersBySearchText(searchText);
             return result.ToActionResult(x => x);
 
         }

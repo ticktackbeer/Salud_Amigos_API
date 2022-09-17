@@ -21,13 +21,18 @@ namespace Salud_Amigos.App.Service
         public async Task<UserAccountModel> CreateUserAccount(string email, string token, string nickName, string name, string password, int age)
         {
             var user= await _repository.CreateUserAccount(email, nickName, name, password, age);
-            var tokenResult = await _repository.CreateToken(user.Id, token, email);
-            return user with { Token = tokenResult.Token};
+            await _repository.CreateToken(user.Id, token, email);
+            return user ;
         }
 
         public Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails)
         {
             return _repository.GetUsersByEmail(emails);
+        }
+
+        public Task<List<UserAccountModel>> GetUsersBySearchText(string searchText)
+        {
+            return _repository.GetUsersBySearchText(searchText);
         }
     }
 }

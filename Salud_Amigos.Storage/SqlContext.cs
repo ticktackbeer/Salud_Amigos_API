@@ -38,7 +38,15 @@ namespace Salud_Amigos.Storage
                 builder.HasOne(e => e.Token)
                 .WithOne().HasPrincipalKey<FriendEntity>(x=>x.UserIdFriend)
                 .HasForeignKey<TokenEntity>(n => n.UserId);
-                
+
+                builder.HasOne(e => e.UserAccountFriend)
+                .WithOne().HasPrincipalKey<FriendEntity>(x => x.UserIdFriend)
+                .HasForeignKey<UserAccountEntity>(n => n.Id);
+
+                //builder.HasOne(e => e.UserAccount)
+                //.WithOne().HasPrincipalKey<FriendEntity>(x => x.UserId)
+                //.HasForeignKey<UserAccountEntity>(n => n.Id);
+
 
             });
 

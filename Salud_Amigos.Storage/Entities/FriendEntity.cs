@@ -16,6 +16,8 @@ namespace Salud_Amigos.Storage.Entities
         public Guid UserIdFriend { get; set; } 
         public string Email { get; set; } = string.Empty;
         public string EmailFriend { get; set; } = string.Empty;
+        public UserAccountEntity? UserAccountFriend { get; set; } 
+        //public UserAccountEntity? UserAccount { get; set; } 
         public DateTimeOffset Timestamp { get; set; }
         public TokenEntity? Token { get; set; }
 
@@ -28,7 +30,9 @@ namespace Salud_Amigos.Storage.Entities
                   UserIdFriend,
                   Email,
                   EmailFriend,
-                  Token?.ToModel()?? TokenModel.EmptyModel());
+                  Token?.ToModel()?? TokenModel.EmptyModel(),
+                  UserAccountFriend?.ToModel()?? UserAccountModel.EmptyModel()
+                  );
 
         }
     }

@@ -69,10 +69,17 @@ namespace Salud_Amigos.Storage
             return entity.Select(x => x.ToModel()).ToList();
         }
 
+        public async Task<List<UserAccountModel>> GetUsersBySearchText(string searchText)
+        {
+
+            var entity = await _context.UserAccount.Where(x => x.Email.Contains(searchText)).ToListAsync();
+            return entity.Select(x => x.ToModel()).ToList();
+        }
+
         public async Task<List<FriendModel>> GetFriendsByEmail(string email)
         {
 
-            var entity = await _context.Friend.Include(t=> t.Token).Where(x => x.Email.Equals(email)).ToListAsync();
+            var entity = await _context.Friend.Include(t=> t.Token).Include(x=> x.UserAccountFriend).Where(x => x.Email.Equals(email)).ToListAsync();
             return entity.Select(x => x.ToModel()).ToList();
         }
 

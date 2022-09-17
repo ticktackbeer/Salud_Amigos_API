@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Salud_Amigos.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Salud_Amigos.Api.Controllers.FriendController.GetFriend(System.String)">
+            <summary>
+            Get all Friends by Email
+            </summary>
+            <param name="email"></param>
+            <returns>All Freinds according to the Email</returns>
+        </member>
+        <member name="M:Salud_Amigos.Api.Controllers.FriendController.CreateFriend(Salud_Amigos.Api.Dto.FriendDto)">
+            <summary>
+            Create a realationship
+            </summary>
+            <param name="friendDto">Friends properties</param>
+            <returns>return friend object</returns>
+        </member>
+        <member name="M:Salud_Amigos.Api.Controllers.UserAccountController.CreateUserAccount(Salud_Amigos.Api.Dto.UserAccountDto)">
+            <summary>
+            Create an User
+            </summary>
+            <param name="userAccountDto">User properties</param>
+            <returns>return createtd user</returns>
+        </member>
+        <member name="M:Salud_Amigos.Api.Controllers.UserAccountController.GetUsersByEmail(System.Collections.Generic.List{System.String})">
+            <summary>
+            Get User by Emails
+            </summary>
+            <param name="email">Emails to search the user</param>
+            <returns>return a list of users</returns>
+        </member>
+        <member name="M:Salud_Amigos.Api.Controllers.UserAccountController.GetUsersBySearchText(System.String)">
+            <summary>
+            Get a User by Search String
+            </summary>
+            <param name="searchText"> String to search the user</param>
+            <returns>return a list of users</returns>
+        </member>
+    </members>
+</doc>

@@ -7,7 +7,6 @@ namespace Salud_Amigos.Storage.Entities
 
         public Guid Id { get; set; }
         public string Email { get; set; } = string.Empty;
-        public string Token { get; set; } = string.Empty;
         public string NickName { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
@@ -21,7 +20,6 @@ namespace Salud_Amigos.Storage.Entities
           return new UserAccountModel(
                 Id,
                 Email,
-                Token,
                 NickName,
                 Name,
                 Password,

@@ -35,10 +35,10 @@ namespace Salud_Amigos.Api.Controllers
         }
 
         /// <summary>
-        /// Create an User
+        /// Create a realationship
         /// </summary>
-        /// <param name="userAccountDto">User properties</param>
-        /// <returns>return createtd user</returns>
+        /// <param name="friendDto">Friends properties</param>
+        /// <returns>return friend object</returns>
         [HttpPost]
         [Route("createFriend")]
         public async Task<ActionResult<FriendModel> > CreateFriend([FromBody] FriendDto friendDto)
