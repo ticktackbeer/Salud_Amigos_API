@@ -17,7 +17,8 @@ namespace Salud_Amigos.Storage.Entities
         public Guid RequestToUserId { get; set; } 
         public string RequestFromNickName { get; set; } = string.Empty;
         public string RequestToNickName { get; set; } = string.Empty;
-       
-      
+        public DateTimeOffset Timestamp { get; set; }
+
+
     }
 }

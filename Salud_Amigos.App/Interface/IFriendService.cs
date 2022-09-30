@@ -11,6 +11,7 @@ namespace Salud_Amigos.App.Interface
     {
 
         Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend);
+        Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend);
         Task<List<FriendModel>> GetFriends(string email);
 
 

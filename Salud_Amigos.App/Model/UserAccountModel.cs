@@ -1,4 +1,6 @@
-﻿namespace Salud_Amigos.App.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Salud_Amigos.App.Model
 {
     public record UserAccountModel
     {
@@ -15,6 +17,9 @@
         }
 
         public Guid Id { get; }
+
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Not a valid email address.")]
         public string Email { get; }
         public string NickName { get; }
         public string Name { get; }

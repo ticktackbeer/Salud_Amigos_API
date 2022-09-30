@@ -24,6 +24,11 @@ namespace Salud_Amigos.App.Service
             return await _repository.CreateFriend(userIdFriend, userId, emailFriend, email);  
         }
 
+        public Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend)
+        {
+           return  _repository.CreateFriendRequest(userAccount, userAccountModelFriend);
+        }
+
         public  async Task<List<FriendModel>> GetFriends(string email)
         {
             return await _repository.GetFriendsByEmail(email);

@@ -1,11 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Salud_Amigos.Storage.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Salud_Amigos.Storage
 {
@@ -29,30 +23,28 @@ namespace Salud_Amigos.Storage
             modelBuilder.Entity<UserAccountEntity>(builder =>
             {
                 builder.ToTable("User");
+               // builder.HasKey(u => u.Id);
                              
             });
 
             modelBuilder.Entity<FriendEntity>(builder =>
             {
                 builder.ToTable("Friend");
-                builder.HasOne(e => e.Token)
-                .WithOne().HasPrincipalKey<FriendEntity>(x=>x.UserIdFriend)
+                builder.HasKey(f => f.Id);
+                builder.HasOne(e => e.Token).WithOne()
+                .HasPrincipalKey<FriendEntity>(x => x.UserIdFriend)
                 .HasForeignKey<TokenEntity>(n => n.UserId);
 
                 builder.HasOne(e => e.UserAccountFriend)
-                .WithOne().HasPrincipalKey<FriendEntity>(x => x.UserIdFriend)
-                .HasForeignKey<UserAccountEntity>(n => n.Id);
-
-                //builder.HasOne(e => e.UserAccount)
-                //.WithOne().HasPrincipalKey<FriendEntity>(x => x.UserId)
-                //.HasForeignKey<UserAccountEntity>(n => n.Id);
-
+                .WithOne()
+                .HasForeignKey<FriendEntity>(h=> h.UserIdFriend);
 
             });
 
             modelBuilder.Entity<FriendRequestEntity>(builder =>
             {
                 builder.ToTable("FriendRequest");
+                builder.HasKey(fr => fr.Id);
 
             });
 
@@ -60,8 +52,7 @@ namespace Salud_Amigos.Storage
             {
                 builder.ToTable("Token");
                 builder.HasKey(x => x.Id);
-               
-                
+
             });
 
         }

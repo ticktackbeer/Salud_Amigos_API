@@ -31,7 +31,7 @@ namespace Salud_Amigos.Storage.Entities
                   Email,
                   EmailFriend,
                   Token?.ToModel()?? TokenModel.EmptyModel(),
-                  UserAccountFriend?.ToModel()?? UserAccountModel.EmptyModel()
+                  UserAccountFriend?.ToModel() ?? UserAccountModel.EmptyModel()
                   );
 
         }

@@ -8,6 +8,8 @@ namespace Salud_Amigos.Api.Dto
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Not a valid email address.")]
         public string Email { get; init; } = string.Empty;
+        
+        [Required(ErrorMessage = "Token is required.")]
         public string Token { get; init; } = string.Empty;
         public string NickName { get; init; } = string.Empty;
         public string Name { get; init; } = string.Empty;

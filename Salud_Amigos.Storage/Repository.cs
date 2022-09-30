@@ -29,6 +29,22 @@ namespace Salud_Amigos.Storage
             entity.Id = entity.Id;
             return entity.ToModel();
         }
+        public async Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend)
+        {
+            FriendRequestEntity entity = new FriendRequestEntity();
+            entity.RequestFromEmail = userAccount.Email;
+            entity.RequestFromNickName = userAccount.NickName;
+            entity.RequestFromUserId = userAccount.Id;
+
+            entity.RequestToEmail = userAccountModelFriend.Email;
+            entity.RequestToNickName = userAccountModelFriend.NickName;
+            entity.RequestToUserId = userAccountModelFriend.Id;
+            
+            entity.Timestamp = new DateTimeOffset(DateTime.UtcNow);
+
+            _context.FriendRequest.Local.Add(entity);
+            return await _context.SaveChangesAsync();
+        }
 
         public async Task<TokenModel> CreateToken(Guid userId, string token, string email)
         {
@@ -48,14 +64,15 @@ namespace Salud_Amigos.Storage
         public async Task<UserAccountModel> CreateUserAccount(string email, string nickName, string name, string password, int age)
         {
 
-            UserAccountEntity entity = new UserAccountEntity();
+            UserAccountEntity entity = new();
             entity.Email = email;
             entity.NickName = nickName;
             entity.Name = name;
             entity.Password = password;
             entity.Age = age;
             entity.Timestamp = new DateTimeOffset(DateTime.Now);
-            _context.UserAccount.Add(entity);
+           
+            _context.UserAccount.Local.Add(entity);
             await _context.SaveChangesAsync();
 
             entity.Id = entity.Id;
@@ -79,7 +96,7 @@ namespace Salud_Amigos.Storage
         public async Task<List<FriendModel>> GetFriendsByEmail(string email)
         {
 
-            var entity = await _context.Friend.Include(t=> t.Token).Include(x=> x.UserAccountFriend).Where(x => x.Email.Equals(email)).ToListAsync();
+            var entity = await _context.Friend.Include(t=> t.Token).Include(x => x.UserAccountFriend).Where(x => x.Email.Equals(email)).ToListAsync();
             return entity.Select(x => x.ToModel()).ToList();
         }
 

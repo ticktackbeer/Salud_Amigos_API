@@ -5,7 +5,7 @@ namespace Salud_Amigos.Storage.Entities
     public class UserAccountEntity
     {
 
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } 
         public string Email { get; set; } = string.Empty;
         public string NickName { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;

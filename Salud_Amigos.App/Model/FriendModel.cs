@@ -1,4 +1,6 @@
-﻿namespace Salud_Amigos.App.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Salud_Amigos.App.Model
 {
     public record FriendModel
     {
@@ -13,14 +15,13 @@
             EmailFriend = emailFriend;
             Token = token;
             UserAccountFriend = userAccountModel;
-
-
-
         }
 
         public Guid Id { get; }
         public Guid UserId { get; }
         public Guid UserIdFriend { get; }
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Not a valid email address.")]
         public string Email { get; }
         public string EmailFriend { get; }
         public TokenModel Token { get; }
