@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salud_Amigos.Api", "Salud_Amigos.API\Salud_Amigos.Api.csproj", "{5F6E409D-72A7-4432-BA83-E1E08A1325A4}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Salud_Amiogos.SqlDb", "Salud_Amiogos.SqlDb\Salud_Amiogos.SqlDb.sqlproj", "{5AEDC615-E616-4DE3-8ECE-228DC20899E5}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Salud_Amigos.SqlDb", "Salud_Amigos.SqlDb\Salud_Amigos.SqlDb.sqlproj", "{5AEDC615-E616-4DE3-8ECE-228DC20899E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salud_Amigos.App", "Salud_Amigos.App\Salud_Amigos.App.csproj", "{7177AC92-FFC9-40F8-99C7-2726440CE910}"
 EndProject
