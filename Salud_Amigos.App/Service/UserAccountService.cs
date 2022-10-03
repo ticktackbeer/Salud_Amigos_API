@@ -34,5 +34,10 @@ namespace Salud_Amigos.App.Service
         {
             return _repository.GetUsersBySearchText(searchText);
         }
+
+        public Task<int> DeleteUserById(Guid userId)
+        {
+            return _repository.DeleteUserById(userId);
+        }
     }
 }

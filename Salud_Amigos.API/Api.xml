@@ -60,5 +60,12 @@
             <param name="searchText"> String to search the user</param>
             <returns>return a list of users</returns>
         </member>
+        <member name="M:Salud_Amigos.Api.Controllers.UserAccountController.DeleteUser(System.Guid)">
+            <summary>
+            Delete an User
+            </summary>
+            <param name="userId">Id of the user to be deleted</param>
+            <returns>return number of deleted rows</returns>
+        </member>
     </members>
 </doc>

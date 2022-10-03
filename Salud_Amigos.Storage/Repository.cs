@@ -93,6 +93,17 @@ namespace Salud_Amigos.Storage
             return entity.Select(x => x.ToModel()).ToList();
         }
 
+        public async Task<int> DeleteUserById(Guid userId)
+        {
+
+            var removeObj = new UserAccountEntity
+            {
+                Id = userId
+            };
+            _context.UserAccount.Remove(removeObj);
+            return await _context.SaveChangesAsync();
+        }
+
         public async Task<List<FriendModel>> GetFriendsByEmail(string email)
         {
 

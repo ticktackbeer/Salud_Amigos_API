@@ -63,6 +63,20 @@ namespace Salud_Amigos.Api.Controllers
 
         }
 
+        /// <summary>
+        /// Delete an User
+        /// </summary>
+        /// <param name="userId">Id of the user to be deleted</param>
+        /// <returns>return number of deleted rows</returns>
+        [HttpDelete]
+        [Route("DeleteUserByUserId")]
+        public async Task<ActionResult<int>> DeleteUser([FromQuery] Guid userId)
+        {
+            var result = await _userAccountService.DeleteUserById(userId);
+            return result.ToActionResult(x => x);
+
+        }
+
 
 
 

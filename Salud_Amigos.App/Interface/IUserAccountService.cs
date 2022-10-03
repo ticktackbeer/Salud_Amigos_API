@@ -13,5 +13,6 @@ namespace Salud_Amigos.App.Interface
         Task<UserAccountModel> CreateUserAccount(string email, string token, string nickName, string name, string password, int age);
         Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails);
         Task<List<UserAccountModel>> GetUsersBySearchText(string searchText);
+        Task<int> DeleteUserById(Guid userId);
     }
 }
