@@ -3,3 +3,5 @@ obj
 .vs
 Salud_Amiogos.SqlDb.jfm
 Salud_Amiogos.SqlDb.dbmdl
+*.dbmdl
+*.jfm
