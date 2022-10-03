@@ -18,10 +18,12 @@ namespace Salud_Amigos.App.Service
 
 
 
-        public async Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend)
+        public async Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend,Guid FriendRequestId)
         {
             await _repository.CreateFriend(userId, userIdFriend, email, emailFriend);
-            return await _repository.CreateFriend(userIdFriend, userId, emailFriend, email);  
+            var returnValue= await _repository.CreateFriend(userIdFriend, userId, emailFriend, email);  
+            await _repository.DeleteFriendRequest(FriendRequestId);
+            return returnValue;
         }
 
         public Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend)
@@ -33,5 +35,17 @@ namespace Salud_Amigos.App.Service
         {
             return await _repository.GetFriendsByEmail(email);
         }
+
+        public async Task<List<FriendRequestModel>> GetReceivedFriendRequest(string email)
+        {
+            return await _repository.GetReceivedFriendRequestByEmail(email);
+        }
+
+        public async Task<List<FriendRequestModel>> GetSendFriendRequest(string email)
+        {
+            return await _repository.GetSendFriendRequestByEmail(email);
+        }
+
+
     }
 }

@@ -10,9 +10,11 @@ namespace Salud_Amigos.App.Interface
     public interface IFriendService
     {
 
-        Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend);
+        Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend,Guid FriendRequestId);
         Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend);
         Task<List<FriendModel>> GetFriends(string email);
+        Task<List<FriendRequestModel>> GetReceivedFriendRequest(string email);
+        Task<List<FriendRequestModel>> GetSendFriendRequest(string email);
 
 
     }

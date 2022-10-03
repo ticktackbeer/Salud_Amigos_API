@@ -15,8 +15,11 @@ namespace Salud_Amigos.App.Interface
         Task<List<UserAccountModel>> GetUsersBySearchText(string searchText);
         Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend);
         Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend);
+        Task<int> DeleteFriendRequest(Guid FriendRequestId);
         Task<TokenModel> CreateToken(Guid userId, string token, string email);
         Task<List<FriendModel>> GetFriendsByEmail(string email);
+        Task<List<FriendRequestModel>> GetReceivedFriendRequestByEmail(string email);
+        Task<List<FriendRequestModel>> GetSendFriendRequestByEmail(string email);
 
     }
 }

@@ -100,6 +100,30 @@ namespace Salud_Amigos.Storage
             return entity.Select(x => x.ToModel()).ToList();
         }
 
+        public async Task<List<FriendRequestModel>> GetReceivedFriendRequestByEmail(string email)
+        {
+            var entity = await _context.FriendRequest.Where(x => x.RequestToEmail.Equals(email)).ToListAsync();
+            return entity.Select(x => x.ToModel()).ToList();
+        }
+
+        public async Task<List<FriendRequestModel>> GetSendFriendRequestByEmail(string email)
+        {
+            var entity = await _context.FriendRequest.Where(x => x.RequestFromEmail.Equals(email)).ToListAsync();
+            return entity.Select(x => x.ToModel()).ToList();
+        }
+
+        public async Task<int> DeleteFriendRequest(Guid FriendRquestId)
+        {
+            var removeObj = new FriendRequestEntity
+            {
+                Id = FriendRquestId
+            };
+            _context.FriendRequest.Remove(removeObj);
+            return await _context.SaveChangesAsync();
+            
+        }
+        
+
 
     }
 }

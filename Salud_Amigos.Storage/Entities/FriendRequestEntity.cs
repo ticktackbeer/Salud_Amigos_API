@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Salud_Amigos.App.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,21 @@ namespace Salud_Amigos.Storage.Entities
         public string RequestFromNickName { get; set; } = string.Empty;
         public string RequestToNickName { get; set; } = string.Empty;
         public DateTimeOffset Timestamp { get; set; }
+
+        public FriendRequestModel ToModel()
+        {
+
+            return new FriendRequestModel(
+                  Id,
+                  RequestFromUserId,
+                  RequestToUserId,
+                  RequestFromEmail,
+                  RequestToEmail,
+                  RequestFromNickName,
+                  RequestToNickName
+                  );
+
+        }
 
 
     }

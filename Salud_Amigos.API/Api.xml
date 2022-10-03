@@ -25,12 +25,19 @@
             <param name="userAccount">User properties </param>
             <returns>return the number of saved operations</returns>
         </member>
-        <member name="M:Salud_Amigos.Api.Controllers.FriendController.GetFriendRequest(System.String)">
+        <member name="M:Salud_Amigos.Api.Controllers.FriendController.GetReceivedFriendRequest(System.String)">
             <summary>
-            Get all Friends Request by Email
+            Get all Received Friends Request by Email
             </summary>
             <param name="email"></param>
-            <returns>All Freinds according to the Email</returns>
+            <returns>All Friends Requests according to the Email</returns>
+        </member>
+        <member name="M:Salud_Amigos.Api.Controllers.FriendController.GetSendFriendRequest(System.String)">
+            <summary>
+            Get all Send Friends Request by Email
+            </summary>
+            <param name="email"></param>
+            <returns>All Friends Requests according to the Email</returns>
         </member>
         <member name="M:Salud_Amigos.Api.Controllers.UserAccountController.CreateUserAccount(Salud_Amigos.Api.Dto.UserAccountDto)">
             <summary>

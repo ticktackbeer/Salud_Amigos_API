@@ -41,7 +41,7 @@ namespace Salud_Amigos.Api.Controllers
         [Route("createFriend")]
         public async Task<ActionResult<FriendModelDto> > CreateFriend([FromBody] FriendDto friendDto)
         {
-            var result = await _friendService.CreateFriend(friendDto.UserId,friendDto.UserIdFriend, friendDto.Email,friendDto.EmailFriend);
+            var result = await _friendService.CreateFriend(friendDto.UserId,friendDto.UserIdFriend, friendDto.Email,friendDto.EmailFriend,friendDto.FriendRequestId);
             return  FriendModelDto.ToModel(result).ToActionResult(x=> x);
             
         }
@@ -66,17 +66,29 @@ namespace Salud_Amigos.Api.Controllers
         }
 
         /// <summary>
-        /// Get all Friends Request by Email
+        /// Get all Received Friends Request by Email
         /// </summary>
         /// <param name="email"></param>
-        /// <returns>All Freinds according to the Email</returns>
+        /// <returns>All Friends Requests according to the Email</returns>
         [HttpGet]
-        [Route("GetFriendRequest")]
-        public async Task<ActionResult<IEnumerable<FriendModelDto>>> GetFriendRequest([FromQuery] string email)
+        [Route("GetReceivedFriendRequest")]
+        public async Task<ActionResult<IEnumerable<FriendRequestModelDto>>> GetReceivedFriendRequest([FromQuery] string email)
         {
-            //TODO Get FriendsRequest
-            var result = await _friendService.GetFriends(email);
-            return result.Select(x=> FriendModelDto.ToModel(x)).ToActionResult(x => x);
+            var result = await _friendService.GetReceivedFriendRequest(email);
+            return result.Select(x=> FriendRequestModelDto.ToModel(x)).ToActionResult(x => x);
+        }
+
+        /// <summary>
+        /// Get all Send Friends Request by Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>All Friends Requests according to the Email</returns>
+        [HttpGet]
+        [Route("GetSendFriendRequest")]
+        public async Task<ActionResult<IEnumerable<FriendRequestModelDto>>> GetSendFriendRequest([FromQuery] string email)
+        {
+            var result = await _friendService.GetSendFriendRequest(email);
+            return result.Select(x => FriendRequestModelDto.ToModel(x)).ToActionResult(x => x);
         }
     }
 }
