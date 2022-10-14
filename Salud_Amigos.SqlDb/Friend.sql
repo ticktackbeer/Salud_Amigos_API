@@ -9,6 +9,6 @@
 	
 
 	CONSTRAINT UC_EmailFriend UNIQUE (Email,EmailFriend),
-	CONSTRAINT FK_User FOREIGN KEY ([UserIdFriend]) REFERENCES [dbo].[User]([Id]) ON DELETE CASCADE,
+	CONSTRAINT FK_User FOREIGN KEY ([UserId]) REFERENCES [dbo].[User]([Id]) ON DELETE CASCADE
 
 )

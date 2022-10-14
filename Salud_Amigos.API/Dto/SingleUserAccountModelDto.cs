@@ -21,10 +21,15 @@ namespace Salud_Amigos.App.Model
         public string Email { get; init; } = string.Empty;
         public string NickName { get; init; } = string.Empty;
 
-        public static SingleUserAccountModelDto ToModel( UserAccountModel userAccountModel)
+        public static List<SingleUserAccountModelDto> ToModel( List<UserAccountModel> userAccountModel)
         {
-            return new SingleUserAccountModelDto(userAccountModel.Id, userAccountModel.Email, userAccountModel.NickName);
+           return userAccountModel.ConvertAll(ToModel);
         }
-       
+
+        public static SingleUserAccountModelDto ToModel(UserAccountModel model)
+        {
+            return new SingleUserAccountModelDto(model.Id, model.Email, model.NickName);
+        }
+
     }
 }

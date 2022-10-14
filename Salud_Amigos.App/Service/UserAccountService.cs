@@ -1,5 +1,8 @@
-﻿using Salud_Amigos.App.Interface;
+﻿using OneOf;
+using OneOf.Types;
+using Salud_Amigos.App.Interface;
 using Salud_Amigos.App.Model;
+using Salud_Amigos.App.Model.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,26 +21,29 @@ namespace Salud_Amigos.App.Service
 
 
 
-        public async Task<UserAccountModel> CreateUserAccount(string email, string token, string nickName, string name, string password, int age)
+        public async Task<OneOf<UserAccountModel, Errors>> CreateUserAccount(string email, string token, string nickName, string name, string password, int age)
         {
             var user= await _repository.CreateUserAccount(email, nickName, name, password, age);
-            await _repository.CreateToken(user.Id, token, email);
+            user.MapT0(t0 => _repository.CreateToken(t0.Id, token, email).Result.MapT1(t1=> _repository.DeleteUserById(t0.Id)));
+            //await _repository.CreateToken(user.Id, token, email);
             return user ;
         }
 
-        public Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails)
+        public async Task<OneOf<List<UserAccountModel>, Errors>> GetUsersByEmail(List<string> emails)
         {
-            return _repository.GetUsersByEmail(emails);
+            return await _repository.GetUsersByEmail(emails);
         }
 
-        public Task<List<UserAccountModel>> GetUsersBySearchText(string searchText)
+        public async Task<OneOf<List<UserAccountModel>, Errors>> GetUsersBySearchText(string searchText)
         {
-            return _repository.GetUsersBySearchText(searchText);
+            return  await _repository.GetUsersBySearchText(searchText);
         }
 
-        public Task<int> DeleteUserById(Guid userId)
+        public async Task<OneOf<Success, Errors>> DeleteUserById(Guid userId)
         {
-            return _repository.DeleteUserById(userId);
+            var result= await _repository.DeleteUserById(userId);
+            return result;
+                
         }
     }
 }

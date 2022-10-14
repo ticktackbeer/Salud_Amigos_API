@@ -31,15 +31,20 @@ namespace Salud_Amigos.App.Model
         public SingleUserAccountRequestDto UserAccountFriendDto { get; }
     
         
+        public static List<FriendModelDto> ToModel(List<FriendModel> model)
+        {
+            return model.ConvertAll(ToModel);
+        }
+
         public static FriendModelDto ToModel(FriendModel model)
         {
-          return  new FriendModelDto(model.Id,
-              model.UserId,
-              model.UserIdFriend,
-              model.Email,
-              model.EmailFriend,
-              model.Token,
-              new SingleUserAccountRequestDto(model.UserAccountFriend.Id, model.UserAccountFriend.Email, model.UserAccountFriend.NickName));
+            return new FriendModelDto(model.Id,
+                model.UserId,
+                model.UserIdFriend,
+                model.Email,
+                model.EmailFriend,
+                model.Token,
+                new SingleUserAccountRequestDto(model.UserAccountFriend.Id, model.UserAccountFriend.Email, model.UserAccountFriend.NickName));
         }
     }
 }

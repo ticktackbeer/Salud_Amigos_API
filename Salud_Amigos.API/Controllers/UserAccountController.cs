@@ -29,7 +29,7 @@ namespace Salud_Amigos.Api.Controllers
         {
 
             var result = await  _userAccountService.CreateUserAccount(userAccountDto.Email, userAccountDto.Token, userAccountDto.NickName, userAccountDto.Name, userAccountDto.Password, userAccountDto.Age);
-            return SingleUserAccountModelDto.ToModel(result).ToActionResult(x=> x);
+            return result.ToActionResult(SingleUserAccountModelDto.ToModel);
             
         }
 
@@ -40,11 +40,11 @@ namespace Salud_Amigos.Api.Controllers
         /// <returns>return a list of users</returns>
         [HttpGet]
         [Route("GetUsersByEmail")]
-        public async Task<ActionResult<IEnumerable<SingleUserAccountModelDto>>> GetUsersByEmail([FromQuery] List<string> email)
+        public async Task<ActionResult<List<SingleUserAccountModelDto>>> GetUsersByEmail([FromQuery] List<string> email)
         {
 
             var result = await _userAccountService.GetUsersByEmail(email);
-            return result.Select(x=>SingleUserAccountModelDto.ToModel(x)).ToActionResult(x => x);
+            return result.ToActionResult(SingleUserAccountModelDto.ToModel);
 
         }
 
@@ -55,11 +55,10 @@ namespace Salud_Amigos.Api.Controllers
         /// <returns>return a list of users</returns>
         [HttpGet]
         [Route("GetUsersBySearchText")]
-        public async Task<ActionResult<IEnumerable<SingleUserAccountModelDto>>> GetUsersBySearchText([FromQuery] string searchText)
+        public async Task<ActionResult<List<SingleUserAccountModelDto>>> GetUsersBySearchText([FromQuery] string searchText)
         {
-
             var result = await _userAccountService.GetUsersBySearchText(searchText);
-            return result.Select(x=> SingleUserAccountModelDto.ToModel(x)).ToActionResult(x => x);
+            return result.ToActionResult(SingleUserAccountModelDto.ToModel);
 
         }
 
@@ -70,10 +69,10 @@ namespace Salud_Amigos.Api.Controllers
         /// <returns>return number of deleted rows</returns>
         [HttpDelete]
         [Route("DeleteUserByUserId")]
-        public async Task<ActionResult<int>> DeleteUser([FromQuery] Guid userId)
+        public async Task<ActionResult> DeleteUser([FromQuery] Guid userId)
         {
             var result = await _userAccountService.DeleteUserById(userId);
-            return result.ToActionResult(x => x);
+            return result.ToActionResult();
 
         }
 

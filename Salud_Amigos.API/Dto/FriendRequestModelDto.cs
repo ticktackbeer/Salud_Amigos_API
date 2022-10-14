@@ -31,7 +31,10 @@ namespace Salud_Amigos.App.Model
         public string RequestFromNickName { get; }         
         public  string RequestToNickName { get; }
 
-
+        public static List<FriendRequestModelDto> ToModel(List<FriendRequestModel> model)
+        {
+            return model.ConvertAll(ToModel);
+        }
 
         public static FriendRequestModelDto ToModel(FriendRequestModel model)
         {

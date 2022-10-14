@@ -1,4 +1,7 @@
-﻿using Salud_Amigos.App.Model;
+﻿using OneOf;
+using OneOf.Types;
+using Salud_Amigos.App.Model;
+using Salud_Amigos.App.Model.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +13,9 @@ namespace Salud_Amigos.App.Interface
     public interface IUserAccountService
     {
 
-        Task<UserAccountModel> CreateUserAccount(string email, string token, string nickName, string name, string password, int age);
-        Task<List<UserAccountModel>> GetUsersByEmail(List<string> emails);
-        Task<List<UserAccountModel>> GetUsersBySearchText(string searchText);
-        Task<int> DeleteUserById(Guid userId);
+        Task<OneOf<UserAccountModel, Errors>> CreateUserAccount(string email, string token, string nickName, string name, string password, int age);
+        Task<OneOf<List<UserAccountModel>, Errors>> GetUsersByEmail(List<string> emails);
+        Task<OneOf<List<UserAccountModel>, Errors>> GetUsersBySearchText(string searchText);
+        Task<OneOf<Success, Errors>> DeleteUserById(Guid userId);
     }
 }

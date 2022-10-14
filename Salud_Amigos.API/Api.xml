@@ -16,7 +16,7 @@
             Create a realationship
             </summary>
             <param name="friendDto">Friends properties</param>
-            <returns>return friend object</returns>
+            <returns>return success or ErrorMessage</returns>
         </member>
         <member name="M:Salud_Amigos.Api.Controllers.FriendController.CreateFriendRequest(Salud_Amigos.App.Model.UserAccountRequestDto)">
             <summary>
@@ -37,6 +37,13 @@
             Get all Send Friends Request by Email
             </summary>
             <param name="email"></param>
+            <returns>All Friends Requests according to the Email</returns>
+        </member>
+        <member name="M:Salud_Amigos.Api.Controllers.FriendController.DeleteFriend(System.Guid)">
+            <summary>
+            Delete FriendRequest by Id
+            </summary>
+            <param name="userId">user id </param>
             <returns>All Friends Requests according to the Email</returns>
         </member>
         <member name="M:Salud_Amigos.Api.Controllers.UserAccountController.CreateUserAccount(Salud_Amigos.Api.Dto.UserAccountDto)">

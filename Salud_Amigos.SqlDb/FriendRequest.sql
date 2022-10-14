@@ -11,6 +11,5 @@
 	
 
 	CONSTRAINT UC_EmailFriendRequest UNIQUE (RequestFromUserId,RequestToUserId) ,
-	CONSTRAINT FK_FromUser FOREIGN KEY (RequestFromUserId) REFERENCES [dbo].[User]([Id]) ON DELETE CASCADE,
 	CONSTRAINT FK_ToUser FOREIGN KEY (RequestToUserId) REFERENCES [dbo].[User]([Id]) ON DELETE CASCADE
 )

@@ -1,5 +1,8 @@
-﻿using Salud_Amigos.App.Interface;
+﻿using OneOf;
+using OneOf.Types;
+using Salud_Amigos.App.Interface;
 using Salud_Amigos.App.Model;
+using Salud_Amigos.App.Model.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,32 +21,36 @@ namespace Salud_Amigos.App.Service
 
 
 
-        public async Task<FriendModel> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend,Guid FriendRequestId)
+        public async Task<OneOf<Success,Errors>> CreateFriend(Guid userId, Guid userIdFriend, string email, string emailFriend,Guid friendRequestId)
         {
-            await _repository.CreateFriend(userId, userIdFriend, email, emailFriend);
-            var returnValue= await _repository.CreateFriend(userIdFriend, userId, emailFriend, email);  
-            await _repository.DeleteFriendRequest(FriendRequestId);
+       
+            var returnValue= await _repository.CreateFriend(userIdFriend, userId, emailFriend, email, friendRequestId);  
             return returnValue;
         }
 
-        public Task<int> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend)
+        public async Task<OneOf<Success, Errors>> CreateFriendRequest(UserAccountModel userAccount, UserAccountModel userAccountModelFriend)
         {
-           return  _repository.CreateFriendRequest(userAccount, userAccountModelFriend);
+           return await  _repository.CreateFriendRequest(userAccount, userAccountModelFriend);
         }
 
-        public  async Task<List<FriendModel>> GetFriends(string email)
+        public  async Task<OneOf<List<FriendModel>, Errors>> GetFriends(string email)
         {
             return await _repository.GetFriendsByEmail(email);
         }
 
-        public async Task<List<FriendRequestModel>> GetReceivedFriendRequest(string email)
+        public async Task<OneOf<List<FriendRequestModel>, Errors>> GetReceivedFriendRequest(string email)
         {
             return await _repository.GetReceivedFriendRequestByEmail(email);
         }
 
-        public async Task<List<FriendRequestModel>> GetSendFriendRequest(string email)
+        public async Task<OneOf<List<FriendRequestModel>, Errors>> GetSendFriendRequest(string email)
         {
             return await _repository.GetSendFriendRequestByEmail(email);
+        }
+
+        public async Task<OneOf<Success, Errors>> DeleteFriendById(Guid userId)
+        {
+            return await _repository.DeleteFriendById(userId);
         }
 
 
